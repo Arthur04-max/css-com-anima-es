@@ -1,0 +1,100 @@
+/* Configurações básicas de layout */
+body {
+    background-color: #121214;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* 1. O CARD PRINCIPAL - Usa Animação Contínua (Entrada Suave) */
+.card {
+    background-color: #202024;
+    border-radius: 12px;
+    padding: 24px;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    
+    /* Propriedades de Animação */
+    animation-name: entradaCard;
+    animation-duration: 0.8s;
+}
+
+/* 2. O BADGE - Usa Animação Infinita em Loop */
+.badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #8257e5;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    
+    /* Propriedades de Animação: Executa infinitamente */
+    animation-name: pulsar;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+.foto-produto {
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+
+/* 3. O BOTÃO - Usa Transição (Estado A -> Estado B com Hover) */
+.btn {
+    background-color: #04d361;
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 16px;
+    
+    /* Transição suave para o efeito de hover */
+    transition: transform 0.2s ease-in-out, background-color 0.2s;
+}
+
+/* Gatilho para a transição do botão */
+.btn:hover {
+    background-color: #02a94d;
+    transform: scale(1.05); /* Alta performance: usando transform */
+}
+
+
+/* ========================================================
+   DEFINIÇÃO DOS @KEYFRAMES (Alta Performance: Opacity e Transform)
+   ======================================================== */
+
+/* Animação do Card: surge de baixo (translateY) e ganha opacidade */
+@keyframes entradaCard {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animação do Badge: altera a escala simulando uma pulsação */
+@keyframes pulsar {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
